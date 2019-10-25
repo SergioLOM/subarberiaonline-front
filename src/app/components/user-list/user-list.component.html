@@ -1,0 +1,61 @@
+<div class="card">
+    <div class="card-header">
+        <a [routerLink]="['/user-registry']" class="btn btn-primary" style="margin: 10px">Registrar usuario</a>
+        <a [routerLink]="['/user-find']" class="btn btn-primary">Buscar usuario</a>
+    </div>
+    
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>Usuarios</p>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Número de documento</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios">
+                        <th scope="row">{{usuario.id}}</th>
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.apellido}}</td>
+                        <td>{{usuario.nroDocumento}}</td>
+                        <td>
+                            <a href="#" class="btn btn-primary btn-lg" style="margin: 10px" data-toggle="modal" data-target="#modalEditar" (click)="showModal(usuario)">Editar</a>
+                            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalEliminarUsuario" (click)="showModal(usuario)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </blockquote>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="modalEliminarUsuario">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Eliminar</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                ¿Está seguro que desea eliminar la información?
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="eliminarUsuario(usuarioSeleccionado.id)">Aceptar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
