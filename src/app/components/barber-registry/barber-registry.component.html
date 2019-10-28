@@ -1,1 +1,47 @@
-<p>barber-registry works!</p>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modalRegistrarBarberia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Registrar barbería</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <input id="barberId" name="barberId" [(ngModel)]="this.barberiaSeleccionada.id" >
+            <div class="card">
+                <div class="card-header">
+                    Ingresar información
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <form (ngSubmit)="insertarBarberia()" #BarberiaForm="ngForm">
+            
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Nombres">Nombre</label>
+                                    <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="nombre" [(ngModel)]="barberia.nombre"  #nombre="ngModel" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Apellidos">Nit</label>
+                                    <input type="text" class="form-control" id="nit" name="nit" placeholder="nit" [(ngModel)]="barberia.nit"  #nit="ngModel" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <button type="submit" class="btn btn-primary" [disabled]="!barberiaForm.form.valid" style="margin: 10px">Registrar</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin: 10px">Cancelar</button>
+                            </div>
+                        </form>
+            
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
