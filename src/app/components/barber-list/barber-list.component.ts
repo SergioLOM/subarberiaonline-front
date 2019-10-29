@@ -38,4 +38,13 @@ export class BarberListComponent implements OnInit {
     )
   }
 
+  actualizarBarberia(barberia: Barber){
+    this.barberService.actualizarBarberia(barberia, barberia.id).subscribe(
+      _=>{
+         location.reload();
+      }
+    )
+
+  }
+
 }

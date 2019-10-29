@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Appointment } from '../../model/appointment';
+import { Barber } from 'src/app/model/barber';
 
 @Component({
   selector: 'app-appointment-list',
@@ -6,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./appointment-list.component.css']
 })
 export class AppointmentListComponent implements OnInit {
+
+  citas: Appointment[] =[];
+
+  barberiaSeleccionada: Barber = new Barber();
 
   constructor() { }
 
