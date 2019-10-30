@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <button type="button" class="btn btn-primary" style="margin: 10px" data-toggle="modal" data-target="#modalRegistrarBarberia">Registrar barbería</button>
+        <button type="button" class="btn btn-primary" style="margin: 10px" data-toggle="modal" data-target="#modalRegistrarBarberia" (click)="resetBarberForm()">Registrar barbería</button>
         <a [routerLink]="['/barber-find']" class="btn btn-primary">Buscar babería</a>
     </div>
     
@@ -12,6 +12,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Nit</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -19,9 +20,10 @@
                     <tr *ngFor="let barberia of barberias">
                         <th scope="row">{{barberia.id}}</th>
                         <td>{{barberia.nombre}}</td>
+                        <td>{{barberia.nit}}</td>
                         <td>
                             <button type="button" class="btn btn-primary btn-lg" style="margin: 2px" data-toggle="modal" data-target="#modalVercitas" (click)="showModal(barberia)">Ver citas</button>
-                            <a href="#" class="btn btn-primary btn-lg" style="margin: 10px" data-toggle="modal" data-target="#modalRegistrarBarberia" (click)="showModal(barberia)">Editar</a>
+                            <button class="btn btn-primary btn-lg" (click)="onPreUpdateBarberia(barberia)" style="margin: 10px" data-toggle="modal" data-target="#modalRegistrarBarberia">Editar</button>
                             <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalEliminar" (click)="showModal(barberia)">Eliminar</button>
                         </td>
                     </tr>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Barber } from '../../model/barber'
 import { BarberService } from 'src/app/service/barber-service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-barber-list',
@@ -38,13 +39,16 @@ export class BarberListComponent implements OnInit {
     )
   }
 
-  actualizarBarberia(barberia: Barber){
-    this.barberService.actualizarBarberia(barberia, barberia.id).subscribe(
-      _=>{
-         location.reload();
-      }
-    )
-
+  onPreUpdateBarberia(barberia: Barber): void {
+    this.barberService.barberiaSeleccionada = Object.assign({}, barberia);
   }
 
+  resetBarberForm(barberiaForm?: NgForm): void {
+    this.barberService.barberiaSeleccionada = {
+      id: null,
+      nombre: '',
+      nit: '',
+      usuario: null
+    };
+  }
 }

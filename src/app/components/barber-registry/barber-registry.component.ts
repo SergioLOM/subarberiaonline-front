@@ -11,26 +11,31 @@ import { Location } from '@angular/common';
 })
 export class BarberRegistryComponent implements OnInit {
 
-  barberia: Barber = new Barber();
+  //barberia: Barber = new Barber();
 
-  constructor(private barberService: BarberService, private location: Location) { }
+  constructor(private barberService: BarberService, 
+              private location: Location) { }
+
 
   ngOnInit() {
   }
 
-  guardandoBarberia(){
-    if(this.barberia.id == null){
-        //Nuevo libro
-        this.barberService.insertarBarberia(this.barberia).subscribe(
-           _=> {
-            location.reload();
-           } 
-        )   
+  guardandoBarberia(barberiaForm: NgForm): void{
+    if(barberiaForm.value.baberId == null){
+      //Nueva barberia
+      this.barberService.insertarBarberia(barberiaForm.value).subscribe(
+        _=> {
+        location.reload();
+        } 
+      ) 
     }
     else{
-      //Actualiza
-      console.log("Actualizar barberia");
-
+      //Actualiza barberia
+    this.barberService.actualizarBarberia(barberiaForm.value, barberiaForm.value.barberId).subscribe(
+      _=> {
+       location.reload();
+      } 
+    ) 
     }
   }
 

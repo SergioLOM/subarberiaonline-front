@@ -20,9 +20,9 @@ export class BarberService {
 
     constructor(private barber: HttpClient){}
 
-    barberia: Barber = new Barber();
+    //barberia: Barber = new Barber();
+    public barberiaSeleccionada: Barber= new Barber();
 
-   
     listarBarberias(): Observable<Barber[]> {
         return this.barber.get<Barber[]>(this.endPointListar);
     }
@@ -35,7 +35,7 @@ export class BarberService {
         return this.barber.post<Barber>(this.endPointInsertar, barberia, {headers: this.HeaderJson});
     }
 
-    actualizarBarberia(barberia: Barber, id: number): Observable<Barber>{
+    actualizarBarberia(barberia, id: number){
         return this.barber.put<Barber>(this.endPointActualizar.concat(id.toString()).concat("/barberia"), barberia, {headers: this.HeaderJson});
     }
 }
