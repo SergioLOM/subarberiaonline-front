@@ -14,6 +14,7 @@ export class BarberService {
     endPointEliminar = 'http://localhost:8080/barberias/';
     endPointInsertar = 'http://localhost:8080/barberias/barberia';
     endPointActualizar = 'http://localhost:8080/barberias/';
+    endPointEncontrar = 'http://localhost:8080/barberias/';
 
     HeaderJson = new HttpHeaders({'Content-type':'application/json'});
     HeaderText = new HttpHeaders({'Content-type':'text/plain'});
@@ -37,5 +38,9 @@ export class BarberService {
 
     actualizarBarberia(barberia, id: number){
         return this.barber.put<Barber>(this.endPointActualizar.concat(id.toString()).concat("/barberia"), barberia, {headers: this.HeaderJson});
+    }
+
+    encontrarBarberia(nit: string): Observable<Barber>{
+        return this.barber.get<Barber>(this.endPointEncontrar.concat(nit).concat("/barberian"));
     }
 }

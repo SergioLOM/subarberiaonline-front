@@ -1,1 +1,56 @@
-<p>barber-find works!</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/barber-list']">Listar barberías</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Buscar</li>
+    </ol>
+</nav>
+  
+<div class="card">
+        <div class="card-header">
+            Buscar barberia
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>Ingresar Nit de la barbería</p>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nit">Nit</label>
+                            <input type="text" class="form-control" id="nit" name="nit" #nit placeholder="nit" >
+                        </div>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary" (click)="encontrarBarberia(nit.value)">Buscar</button>
+            </blockquote>
+        </div>
+</div>
+  
+<div class="card-body">
+    <blockquote class="blockquote mb-0">
+        <p>Barbería</p>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Nit</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{barberia.id}}</th>
+                    <td>{{barberia.nombre}}</td>
+                    <td>{{barberia.nit}}</td>
+                    <td>
+                        <a href="#" class="btn btn-primary btn-lg" style="margin: 10px" data-toggle="modal" data-target="#modalEditar" (click)="showModal(barberia)">Editar</a>
+                        <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalEliminar" (click)="showModal(barberia)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+  
+    </blockquote>
+</div>

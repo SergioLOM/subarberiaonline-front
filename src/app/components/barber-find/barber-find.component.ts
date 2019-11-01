@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BarberService } from '../../service/barber-service';
+import { Barber } from '../../model/barber';
 
 @Component({
   selector: 'app-barber-find',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarberFindComponent implements OnInit {
 
-  constructor() { }
+  barberia: Barber = new Barber();
+
+  constructor(private barberService: BarberService) { }
 
   ngOnInit() {
+  }
+  
+  encontrarBarberia(nit: string){
+    this.barberService.encontrarBarberia(nit).subscribe(
+      barberia => {
+        this.barberia = barberia;
+      }
+    )
   }
 
 }

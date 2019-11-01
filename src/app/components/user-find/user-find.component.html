@@ -1,1 +1,69 @@
-<p>user-find works!</p>
+<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/people-list']">Listar usuarios</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Buscar</li>
+        </ol>
+      </nav>
+      
+      <div class="card">
+        <div class="card-header">
+            Buscar usuario
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>Ingresar número del documento</p>
+      
+                <form #personaForm="ngForm">
+      
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="tipoDocIdentidad">Tipo de documento</label>
+        
+                            <select class="form-control" id="tipoDocIdentidad" name="tipoDocIdentidad" >
+                                <option hidden disabled selected>--Seleccionar--</option>
+                                <option *ngFor="let tipodocumento of tiposDocumentoIdentidad" [ngValue]="tipodocumento.id">{{tipodocumento.nombre}}</option>
+                            </select>
+                        </div>
+      
+                        <div class="form-group col-md-6">
+                            <label for="nroDocumento">Número de documento</label>
+                            <input type="text" class="form-control" id="nroDoc" name="nroDoc" #nroDoc placeholder="número de identidad" >
+                        </div>
+                    </div>
+      
+                    <button type="submit" class="btn btn-primary" [disabled]="!personaForm.form.valid" (click)="encontrarUsuario(nroDoc.value)">Buscar</button>
+                </form>
+      
+            </blockquote>
+        </div>
+      </div>
+      
+      <div class="card-body">
+          <blockquote class="blockquote mb-0">
+              <p>Personas</p>
+              <table class="table">
+                  <thead class="thead-dark">
+                      <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Apellidos</th>
+                          <th scope="col">Nro. Documento Identidad</th>
+                          <th scope="col">Acciones</th>
+                      </tr>
+                  </thead>
+      
+                  <tbody>
+                      <tr>
+                          <th scope="row">{{usuario.id}}</th>
+                          <td>{{usuario.nombre}}</td>
+                          <td>{{usuario.apellido}}</td>
+                          <td>{{usuario.nroDocumento}}</td>
+                          <td>
+                              <a href="#" class="btn btn-primary btn-lg" style="margin: 10px" data-toggle="modal" data-target="#modalEditar" (click)="showModal(usuario)">Editar</a>
+                              <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalEliminar" (click)="showModal(usuario)">Eliminar</button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </blockquote>
+      </div>

@@ -13,6 +13,7 @@ export class UserService {
     endPointEliminar = 'http://localhost:8080/usuarios/';
     endPointInsertar = 'http://localhost:8080/usuarios/usuario';
     endPointActualizar = 'http://localhost:8080/usuarios/';
+    endPointEncontrar ='http://localhost:8080/usuarios/';
 
     HeaderJson = new HttpHeaders({'Content-type':'application/json'});
     HeaderText = new HttpHeaders({'Content-type':'text/plain'});
@@ -35,5 +36,9 @@ export class UserService {
 
     actualizarUsuario(usuario, id: number){
         return this.user.put<User>(this.endPointActualizar.concat(id.toString()).concat("/usuario"), usuario, {headers: this.HeaderJson});
+    }
+
+    encontrarUsuario(nroDocumento: string): Observable<User>{
+        return this.user.get<User>(this.endPointEncontrar.concat(nroDocumento).concat("/usuariod"));
     }
 }
