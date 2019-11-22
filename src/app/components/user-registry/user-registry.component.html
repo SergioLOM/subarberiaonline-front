@@ -38,14 +38,14 @@
                                         <div class="form-group col-md-6">
                                             <label for="tipoDocIdentidad">Tipo de documento</label>
                         
-                                            <select class="form-control" id="tipoDocIdentidad" name="tipoDocIdentidad" placeholder="d.ff" [(ngModel)]="this.userService.usuarioSeleccionado.tipoDocumentoIdentidad">
+                                            <select class="form-control" id="tipoDocumentoIdentidad" name="tipoDocumentoIdentidad" placeholder="d.ff" [(ngModel)]="this.userService.usuarioSeleccionado.tipoDocumentoIdentidad">
                                                 <option *ngFor="let tipodocumento of tiposDocumentoIdentidad" [ngValue]="tipodocumento">{{tipodocumento.nombre}}</option>
                                             </select>
                                         </div>
                     
                                         <div class="form-group col-md-6">
                                             <label for="nroDocumento">Número de documento</label>
-                                            <input type="text" class="form-control" id="nroDoc" name="nroDoc" placeholder="número de identidad" [(ngModel)]="this.userService.usuarioSeleccionado.nroDocumento">
+                                            <input type="text" class="form-control" id="nroDocumento" name="nroDocumento" placeholder="número de identidad" [(ngModel)]="this.userService.usuarioSeleccionado.nroDocumento">
                                         </div>
                                 </div>
     

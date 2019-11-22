@@ -1,7 +1,8 @@
 <div class="card">
     <div class="card-header">
         <button type="button" class="btn btn-primary" style="margin: 10px" data-toggle="modal" data-target="#modalRegistrarBarberia" (click)="resetBarberForm()">Registrar barbería</button>
-        <a [routerLink]="['/barber-find']" class="btn btn-primary">Buscar babería</a>
+        <a [routerLink]="['/barber-find']" class="btn btn-primary" style="margin: 10px">Buscar babería</a>
+        <button type="button" class="btn btn-primary" style="margin: 10px" data-toggle="modal" data-target="#modalNuevaCita">Crear cita</button>
     </div>
     
     <div class="card-body">
@@ -63,4 +64,7 @@
 <app-appointment-list></app-appointment-list>
 
 <app-barber-registry></app-barber-registry>
+
+<app-appointment-registry></app-appointment-registry>
+
 

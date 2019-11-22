@@ -1,1 +1,68 @@
-<p>appointment-registry works!</p>
+ <!-- Modal -->
+ <div class="modal fade" id="modalNuevaCita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nueva cita</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+            
+            <div class="card">
+                <div class="card-header">
+                    Ingresar información
+                </div>
+
+                <div class="card-body">
+                    
+                        <form class="form-cita" #citaForm="ngForm" (ngSubmit)="nuevaCita(citaForm)">
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="Fecha">Fecha</label>
+                                    <input type="text" class="form-control" id="fecha" name="fecha" placeholder="aaaa-mm-dd" [(ngModel)]="this.cita.fecha">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Hora">Hora</label>
+                                    <input type="text" class="form-control" id="hora" name="hora" placeholder="hh:mm" [(ngModel)]="this.cita.hora">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                            
+                                <label for="">Barberia</label>
+            
+                                <select class="form-control" id="barberia" name="barberia" placeholder="d.ff" [(ngModel)]="this.cita.barberia" #barberia="ngModel" required>
+                                    <option *ngFor="let barberia of barberias" [ngValue]="barberia">{{barberia.nombre}}</option>
+                                </select>
+                            
+                            </div>
+
+                            <div class="form-row">
+                            
+                                <label for="">Usuario</label>
+            
+                                <select class="form-control" id="usuario" name="usuario" placeholder="d.ff" [(ngModel)]="this.cita.usuario" #usuario="ngModel" required>
+                                    <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{usuario.nroDocumento}}</option>
+                                </select>
+                            
+                        </div>
+
+
+
+                            <div class="form-row">
+                                <button type="submit" class="btn btn-primary" style="margin: 10px">Guardar</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin: 10px">Cancelar</button>
+                            </div>
+                        </form>
+            
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
